@@ -1498,5 +1498,29 @@
     "name": "Zimbabwe",
     "calling_code": "+263",
     "flag": "flags/zwe.png"
+  },
+  {
+    "country_code": "XE",
+    "name": "England",
+    "calling_code": "+44",
+    "flag": "flags/xe.png"
+  },
+  {
+    "country_code": "XS",
+    "name": "Scotland",
+    "calling_code": "+44",
+    "flag": "flags/xs.png"
+  },
+  {
+    "country_code": "XW",
+    "name": "Wales",
+    "calling_code": "+44",
+    "flag": "flags/xw.png"
+  },
+  {
+    "country_code": "XI",
+    "name": "Northern ireland",
+    "calling_code": "+44",
+    "flag": "flags/xi.png"
   }
 ]
