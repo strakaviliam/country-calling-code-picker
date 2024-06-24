@@ -33,6 +33,9 @@ class CountryPickerWidget extends StatefulWidget {
   ///Can be set to `true` for opening the keyboard automatically. Default set to `false`
   final bool focusSearchBox;
 
+  ///Can be set to `false` to show only country name. Default set to `true`
+  final bool showPhonePrefix;
+
   ///This will change the hint of the search box. Alternatively [searchInputDecoration] can be used to change decoration fully.
   final String searchHintText;
 
@@ -46,6 +49,7 @@ class CountryPickerWidget extends StatefulWidget {
     this.flagIconSize = 32,
     this.showSeparator = false,
     this.focusSearchBox = false,
+    this.showPhonePrefix = true,
   }) : super(key: key);
 
   @override
@@ -188,11 +192,18 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                             SizedBox(
                               width: 16,
                             ),
-                            Expanded(
-                                child: Text(
-                              '${_filteredList[index].callingCode} ${_filteredList[index].name}',
-                              style: widget.itemTextStyle,
-                            )),
+                            if(widget.showPhonePrefix)
+                              Expanded(
+                                child: Text('${_filteredList[index].callingCode} ${_filteredList[index].name}',
+                                  style: widget.itemTextStyle,
+                                ),
+                              )
+                            else
+                              Expanded(
+                                child: Text('${_filteredList[index].name}',
+                                  style: widget.itemTextStyle,
+                                ),
+                              ),
                           ],
                         ),
                       ),
