@@ -414,6 +414,12 @@
     "flag": "flags/slv.png"
   },
   {
+    "country_code": "XE",
+    "name": "England",
+    "calling_code": "+44",
+    "flag": "flags/xe.png"
+  },
+  {
     "country_code": "GQ",
     "name": "Equatorial Guinea",
     "calling_code": "+240",
@@ -990,6 +996,12 @@
     "flag": "flags/nfk.png"
   },
   {
+    "country_code": "XI",
+    "name": "Northern ireland",
+    "calling_code": "+44",
+    "flag": "flags/xi.png"
+  },
+  {
     "country_code": "KP",
     "name": "Korea (Democratic People's Republic of)",
     "calling_code": "+850",
@@ -1186,6 +1198,12 @@
     "name": "Saudi Arabia",
     "calling_code": "+966",
     "flag": "flags/sau.png"
+  },
+  {
+    "country_code": "XS",
+    "name": "Scotland",
+    "calling_code": "+44",
+    "flag": "flags/xs.png"
   },
   {
     "country_code": "SN",
@@ -1470,6 +1488,12 @@
     "flag": "flags/vnm.png"
   },
   {
+    "country_code": "XW",
+    "name": "Wales",
+    "calling_code": "+44",
+    "flag": "flags/xw.png"
+  },
+  {
     "country_code": "WF",
     "name": "Wallis and Futuna",
     "calling_code": "+681",
@@ -1498,29 +1522,5 @@
     "name": "Zimbabwe",
     "calling_code": "+263",
     "flag": "flags/zwe.png"
-  },
-  {
-    "country_code": "XE",
-    "name": "England",
-    "calling_code": "+44",
-    "flag": "flags/xe.png"
-  },
-  {
-    "country_code": "XS",
-    "name": "Scotland",
-    "calling_code": "+44",
-    "flag": "flags/xs.png"
-  },
-  {
-    "country_code": "XW",
-    "name": "Wales",
-    "calling_code": "+44",
-    "flag": "flags/xw.png"
-  },
-  {
-    "country_code": "XI",
-    "name": "Northern ireland",
-    "calling_code": "+44",
-    "flag": "flags/xi.png"
   }
 ]
