@@ -36,6 +36,9 @@ class CountryPickerWidget extends StatefulWidget {
   ///Can be set to `false` to show only country name. Default set to `true`
   final bool showPhonePrefix;
 
+  ///List of countries whitch shouldn't be visible in list
+  final List<String> hideCountries;
+
   ///This will change the hint of the search box. Alternatively [searchInputDecoration] can be used to change decoration fully.
   final String searchHintText;
 
@@ -50,6 +53,7 @@ class CountryPickerWidget extends StatefulWidget {
     this.showSeparator = false,
     this.focusSearchBox = false,
     this.showPhonePrefix = true,
+    this.hideCountries = const [],
   }) : super(key: key);
 
   @override
@@ -106,6 +110,9 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
       _isLoading = true;
     });
     _list = await getCountries(context);
+    if(widget.hideCountries.isNotEmpty) {
+      _list.removeWhere((it) => widget.hideCountries.map((it) => it.toLowerCase()).toList().contains(it.countryCode.toLowerCase()));
+    }
     try {
       String? code = await FlutterSimCountryCode.simCountryCode;
       _currentCountry =
