@@ -27,8 +27,6 @@ class CountryPickerWidget extends StatefulWidget {
   /// Flag icon size (width). Default set to 32.
   final double flagIconSize;
 
-  ///Can be set to `true` for showing the List Separator. Default set to `false`
-  final bool showSeparator;
 
   ///Can be set to `true` for opening the keyboard automatically. Default set to `false`
   final bool focusSearchBox;
@@ -50,7 +48,6 @@ class CountryPickerWidget extends StatefulWidget {
     this.searchInputDecoration,
     this.searchHintText = _kDefaultSearchHintText,
     this.flagIconSize = 32,
-    this.showSeparator = false,
     this.focusSearchBox = false,
     this.showPhonePrefix = true,
     this.hideCountries = const [],
@@ -133,6 +130,11 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    if (_filteredList.isEmpty) {
+      return SizedBox();
+    }
+
     return Column(
       children: <Widget>[
         SizedBox(
@@ -175,15 +177,16 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
         Expanded(
           child: _isLoading
               ? Center(child: CircularProgressIndicator())
-              : ListView.separated(
+              : ListView.builder(
                   padding: EdgeInsets.only(top: 16),
                   controller: _scrollController,
                   itemCount: _filteredList.length,
-                  separatorBuilder: (_, index) =>
-                      widget.showSeparator ? Divider() : Container(),
                   itemBuilder: (_, index) {
                     return InkWell(
                       onTap: () {
+                        if(_filteredList.isEmpty) {
+                          return;
+                        }
                         widget.onSelected?.call(_filteredList[index]);
                       },
                       child: Container(
