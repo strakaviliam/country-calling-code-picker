@@ -131,10 +131,6 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
   @override
   Widget build(BuildContext context) {
 
-    if (_filteredList.isEmpty) {
-      return SizedBox();
-    }
-
     return Column(
       children: <Widget>[
         SizedBox(
@@ -177,7 +173,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
         Expanded(
           child: _isLoading
               ? Center(child: CircularProgressIndicator())
-              : ListView.builder(
+              : (_filteredList.isEmpty ? SizedBox() : ListView.builder(
                   padding: EdgeInsets.only(top: 16),
                   controller: _scrollController,
                   itemCount: _filteredList.length,
@@ -219,7 +215,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                       ),
                     );
                   },
-                ),
+                )),
         )
       ],
     );
