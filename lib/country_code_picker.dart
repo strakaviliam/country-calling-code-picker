@@ -183,7 +183,9 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget> {
                         if(_filteredList.isEmpty) {
                           return;
                         }
-                        widget.onSelected?.call(_filteredList[index]);
+                        if(index < _filteredList.length) {
+                          widget.onSelected?.call(_filteredList[index]);
+                        }
                       },
                       child: Container(
                         padding: EdgeInsets.only(
