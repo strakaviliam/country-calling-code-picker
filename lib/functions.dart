@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:country_calling_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_sim_country_code/flutter_sim_country_code.dart';
 
 import './country.dart';
 
@@ -21,16 +19,7 @@ Future<List<Country>> getCountries(BuildContext context) async {
 ///If there is no sim in the device, first country in the list will be returned.
 Future<Country> getDefaultCountry(BuildContext context) async {
   final list = await getCountries(context);
-  try {
-    final countryCode = await FlutterSimCountryCode.simCountryCode;
-    if (countryCode == null) {
-      return list.first;
-    }
-    return list.firstWhere((element) =>
-        element.countryCode.toLowerCase() == countryCode.toLowerCase());
-  } catch (e) {
-    return list.first;
-  }
+  return list.first;
 }
 
 ///This function returns an country whose [countryCode] matches with the passed one.
@@ -43,9 +32,9 @@ Future<Country?> getCountryByCountryCode(
 Future<Country?> showCountryPickerSheet(BuildContext context,
     {Widget? title,
     Widget? cancelWidget,
-    double cornerRadius: 35,
-    bool focusSearchBox: false,
-    double heightFactor: 0.9}) {
+    double cornerRadius = 35,
+    bool focusSearchBox = false,
+    double heightFactor = 0.9}) {
   assert(heightFactor <= 0.9 && heightFactor >= 0.4,
       'heightFactor must be between 0.4 and 0.9');
   return showModalBottomSheet<Country?>(
@@ -100,8 +89,8 @@ Future<Country?> showCountryPickerSheet(BuildContext context,
 Future<Country?> showCountryPickerDialog(
   BuildContext context, {
   Widget? title,
-  double cornerRadius: 35,
-  bool focusSearchBox: false,
+  double cornerRadius = 35,
+  bool focusSearchBox = false,
 }) {
   return showDialog<Country?>(
       context: context,
